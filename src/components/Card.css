@@ -1,0 +1,15 @@
+.card{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    overflow: hidden;
+    border-radius: 25px;
+
+}
+
+.card-grey{
+    background-color: grey;
+}
+
+.card-color{
+    background-color: rosybrown;
+} 
