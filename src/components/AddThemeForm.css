@@ -1,0 +1,31 @@
+ .color-input {
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  outline: none;
+  padding: 0;
+  border: none;
+
+} 
+
+
+/*
+von Dominik, soll wohl tun tuts aber nicht.. 
+..where is my mistake? o.o
+
+
+.color-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.color-input::-webkit-color-swatch {
+  border-radius: 0.5rem;
+} */
