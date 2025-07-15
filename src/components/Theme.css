@@ -9,17 +9,14 @@
 }
 
 .card-color {
-
   flex-grow: 1;
-
   border-radius: 10px;
   gap: 2px;
-
 }
 
 .compact-list {
-    display: flex;
+  display: flex;
   height: 50px;
   padding: 5px;
-  gap: 5px
+  gap: 5px;
 }
