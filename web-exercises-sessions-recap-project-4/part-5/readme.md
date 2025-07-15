@@ -25,7 +25,7 @@
 - Enhance the color card component to display the color name fetched from the API.
 - Test the persistence of theme state across app sessions.
 - Test the fetching and display of color names to ensure accuracy.
-
+  
 ## Notes
 
 - `use-local-storage-state` works a bit different from `useState`. It gets two inputs: `storage-key-string` and an `options` object. inside the options object you can define the `defaultValue`:

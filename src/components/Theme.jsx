@@ -37,12 +37,11 @@ export default function Theme({ theme }) {
       ) : (
         <ul className="compact-list">
           {theme.colors.map((color) => (
-            <li 
-            key={color.role} 
-            className="card-color"
-            style={{ backgroundColor: color.value }}>
-                
-            </li>
+            <li
+              key={color.role}
+              className="card-color"
+              style={{ backgroundColor: color.value }}
+            ></li>
           ))}
         </ul>
       )}

@@ -28,27 +28,32 @@ export default function AddThemeForm({ handleSubmit }) {
           />
         </div>
         <div className="color-input-wrapper">
-        <input
-          className="color-input"
-          onChange={handleColorChange}
-          type="color"
-          name="secondary"
-          value={colors.secondary}
-        /></div>
-        <div className="color-input-wrapper"><input
-          className="color-input"
-          onChange={handleColorChange}
-          type="color"
-          name="surface"
-          value={colors.surface}
-        /></div>
-        <div className="color-input-wrapper"><input
-          className="color-input"
-          onChange={handleColorChange}
-          type="color"
-          name="surfaceOn"
-          value={colors.surfaceOn}
-        /></div>
+          <input
+            className="color-input"
+            onChange={handleColorChange}
+            type="color"
+            name="secondary"
+            value={colors.secondary}
+          />
+        </div>
+        <div className="color-input-wrapper">
+          <input
+            className="color-input"
+            onChange={handleColorChange}
+            type="color"
+            name="surface"
+            value={colors.surface}
+          />
+        </div>
+        <div className="color-input-wrapper">
+          <input
+            className="color-input"
+            onChange={handleColorChange}
+            type="color"
+            name="surfaceOn"
+            value={colors.surfaceOn}
+          />
+        </div>
         <textarea
           name="themeName"
           rows="1"
