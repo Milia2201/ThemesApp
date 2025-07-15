@@ -1,34 +1,27 @@
 import { useState } from "react";
 import "./App.css";
-import Card from "./components/Card";
+import Card from "./components/Card.jsx";
 import { themes } from "./assets/db.js";
+import Theme from "./components/Theme.jsx";
 
-function App() {
+export default function App() {
   const [count, setCount] = useState(0);
-  console.log(themes[0].colors);
-
   return (
     <>
       <header>
-        <h1>Theme Creator</h1>
+        <h1 className="title">Theme Creator</h1>
       </header>
       <main className="main">
-        <article>
-          <h2>{themes[0].name}</h2>
-          <ul>
-            {themes[0].colors.map((color) => {
-              return (
-                <li key={color.role}>
-                  <Card color={color} />
-                </li>
-              );
-            })}
-          </ul>
-        </article>
+        <ul>
+          {themes.map((theme) => {
+            return (
+              <li key={theme.id}>
+                <Theme theme={theme} />
+              </li>
+            );
+          })}
+        </ul>
       </main>
     </>
   );
 }
-
-export default App;
-console.log();
