@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AddThemeForm.css"
+import "./AddThemeForm.css";
 
 export default function AddThemeForm({ handleSubmit }) {
   const [colors, setColors] = useState({
@@ -18,34 +18,37 @@ export default function AddThemeForm({ handleSubmit }) {
   return (
     <>
       <form onSubmit={handleSubmit} className="form">
-        <input
-          className="color-input"
-          onChange={handleColorChange}
-          type="color"
-          name="primary"
-          value={colors.primary}
-        />
+        <div className="color-input-wrapper">
+          <input
+            className="color-input"
+            onChange={handleColorChange}
+            type="color"
+            name="primary"
+            value={colors.primary}
+          />
+        </div>
+        <div className="color-input-wrapper">
         <input
           className="color-input"
           onChange={handleColorChange}
           type="color"
           name="secondary"
           value={colors.secondary}
-        />
-        <input
+        /></div>
+        <div className="color-input-wrapper"><input
           className="color-input"
           onChange={handleColorChange}
           type="color"
           name="surface"
           value={colors.surface}
-        />
-        <input
+        /></div>
+        <div className="color-input-wrapper"><input
           className="color-input"
           onChange={handleColorChange}
           type="color"
           name="surfaceOn"
           value={colors.surfaceOn}
-        />
+        /></div>
         <textarea
           name="themeName"
           rows="1"
