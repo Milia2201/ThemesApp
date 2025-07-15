@@ -7,13 +7,11 @@ import AddThemeForm from "./components/AddThemeForm.jsx";
 
 export default function App() {
   const [themes, setThemes] = useState(initialThemes);
-  console.log("newThemes: ", themes);
 
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log(data);
 
     const newTheme = {
       id: crypto.randomUUID(),
@@ -29,6 +27,17 @@ export default function App() {
     setThemes([newTheme, ...themes]);
     event.target.reset();
   }
+
+  function handleDeleteTheme(id) {
+    const newThemes = themes.filter((theme) => {
+      if (theme.id !== id) {
+        return theme;
+      }
+    });
+    
+    setThemes(newThemes);
+  }
+
   return (
     <>
       <header>
@@ -40,7 +49,7 @@ export default function App() {
           {themes.map((theme) => {
             return (
               <li key={theme.id}>
-                <Theme theme={theme} />
+                <Theme theme={theme} handleDeleteTheme={handleDeleteTheme} />
               </li>
             );
           })}
