@@ -3,7 +3,7 @@ import Card from "./Card.jsx";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-export default function Theme({ theme }) {
+export default function Theme({ theme, handleDeleteTheme }) {
   const [detailed, setDetailed] = useState(false);
 
   if (detailed) {
@@ -28,6 +28,14 @@ export default function Theme({ theme }) {
       </button>
       {detailed ? (
         <ul>
+          <button
+            className="delete-button"
+            onClick={function () {
+              handleDeleteTheme(theme.id);
+            }}
+          >
+            Delete Theme
+          </button>
           {theme.colors.map((color) => (
             <li key={color.role}>
               <Card color={color} />
