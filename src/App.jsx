@@ -4,9 +4,12 @@ import Card from "./components/Card.jsx";
 import { themes as initialThemes } from "./assets/db.js";
 import Theme from "./components/Theme.jsx";
 import AddThemeForm from "./components/AddThemeForm.jsx";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App() {
-  const [themes, setThemes] = useState(initialThemes);
+  const [themes, setThemes] = useLocalStorageState("themes", {
+    defaultValue: initialThemes,
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,9 +37,58 @@ export default function App() {
         return theme;
       }
     });
-    
+
     setThemes(newThemes);
   }
+
+  /*   
+= useLocalStorageState("themes", { defaultValue: 0 });
+--------------
+localStorage.setItem("name", "Alex");
+localStorage.setItem("age", 28);
+localStorage.setItem("isOnline", true); 
+---------------
+const name = localStorage.getItem("name"); // → "Alex"
+const age = localStorage.getItem("age"); // → 28
+const isOnline = localStorage.getItem("isOnline"); // → true
+--------------
+localStorage.removeItem("name");
+--------------
+localStorage.clear();
+
+---------------
+const user = {
+  name: "Alex",
+  age: 28,
+  isOnline: true,
+};
+
+localStorage.setItem("user", JSON.stringify(user));
+---------------
+
+const user = JSON.parse(localStorage.getItem("user"));
+----------------
+// store data
+function setItem(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+// retrieve data
+function getItem(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+  ---------------------
+setItem("user", {
+  name: "Alex",
+  age: 28,
+  isOnline: true,
+});
+setItem("count", 42);
+
+const user = getItem("user");
+const count = getItem("count");
+--------------------
+*/
 
   return (
     <>
