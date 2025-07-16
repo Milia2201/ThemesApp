@@ -5,7 +5,7 @@ export default function AddThemeForm({ handleSubmit }) {
   const [colors, setColors] = useState({
     primary: "#69b00b", // Default color for primary
     secondary: "#698008", // Default color for secondary
-    surface: "#800869", // Default color for surface
+    surface: "#800869", // A50B5EDefault color for surface
     surfaceOn: "#b00b69", // Default color for surface-on
   });
 
