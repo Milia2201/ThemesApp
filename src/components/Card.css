@@ -19,3 +19,11 @@ h1 {
 .card-color {
   background-color: rosybrown;
 }
+
+.color-name {
+  color: rgb(86, 86, 86);
+}
+
+.color-code {
+  color: rgb(102, 102, 102);
+}

@@ -4,9 +4,12 @@ import Card from "./components/Card.jsx";
 import { themes as initialThemes } from "./assets/db.js";
 import Theme from "./components/Theme.jsx";
 import AddThemeForm from "./components/AddThemeForm.jsx";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function App() {
-  const [themes, setThemes] = useState(initialThemes);
+  const [themes, setThemes] = useLocalStorageState("themes", {
+    defaultValue: initialThemes,
+  });
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,7 +37,7 @@ export default function App() {
         return theme;
       }
     });
-    
+
     setThemes(newThemes);
   }
 
