@@ -2,9 +2,11 @@ import "./Theme.css";
 import Card from "./Card.jsx";
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import EditForm from "./EditForm.jsx";
 
-export default function Theme({ theme, handleDeleteTheme }) {
+export default function Theme({ theme, handleDeleteTheme, handleEditTheme }) {
   const [detailed, setDetailed] = useState(false);
+  const [editMode, setEditMode] = useState(false);
 
   if (detailed) {
     const detailedCard = theme.colors.map((color) => (
@@ -26,23 +28,7 @@ export default function Theme({ theme, handleDeleteTheme }) {
           {detailed ? <ChevronUp /> : <ChevronDown />}
         </span>
       </button>
-      {detailed ? (
-        <ul>
-          <button
-            className="delete-button"
-            onClick={function () {
-              handleDeleteTheme(theme.id);
-            }}
-          >
-            Delete Theme
-          </button>
-          {theme.colors.map((color) => (
-            <li key={color.role}>
-              <Card color={color} />
-            </li>
-          ))}
-        </ul>
-      ) : (
+      {!detailed ? (
         <ul className="compact-list">
           {theme.colors.map((color) => (
             <li
@@ -52,6 +38,36 @@ export default function Theme({ theme, handleDeleteTheme }) {
             ></li>
           ))}
         </ul>
+      ) : !editMode ? (
+        <ul>
+          <button
+            className="delete-button button"
+            onClick={function () {
+              handleDeleteTheme(theme.id);
+            }}
+          >
+            Delete Theme
+          </button>
+          <button
+            className="edit-button button"
+            onClick={() => setEditMode(!editMode)}
+          >
+            Edit Theme
+          </button>
+
+          {theme.colors.map((color) => (
+            <li key={color.role}>
+              <Card color={color} />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <EditForm
+          theme={theme}
+          handleEditTheme={handleEditTheme}
+          setEditMode={setEditMode}
+          editMode={editMode}
+        />
       )}
     </article>
   );

@@ -1,24 +1,45 @@
+import "./EditForm.css";
 import { useState } from "react";
-import "./AddThemeForm.css";
 
-export default function AddThemeForm({ handleSubmit }) {
+export default function EditForm({
+  theme,
+  handleEditTheme,
+  setEditMode,
+  editMode,
+}) {
   const [colors, setColors] = useState({
-    primary: "#69b00b", // Default color for primary
-    secondary: "#698008", // Default color for secondary
-    surface: "#800869", // A50B5EDefault color for surface
-    surfaceOn: "#b00b69", // Default color for surface-on
+    primary: theme.colors[0].value,
+    secondary: theme.colors[1].value,
+    surface: theme.colors[2].value,
+    surfaceOn: theme.colors[3].value,
   });
+  console.log("theme: ", theme);
 
   function handleColorChange(event) {
     const name = event.target.name;
     const colorValue = event.target.value;
     setColors({ ...colors, [name]: colorValue });
   }
+  //textarea durch input ersetzen
 
   return (
-    <>
-      <form onSubmit={handleSubmit} className="form">
-        <h4>Create your own theme:</h4>
+    <article className="card">
+      <form
+        onSubmit={function (event) {
+          handleEditTheme(event, theme.id);
+          setEditMode(!editMode);
+        }}
+        className="edit-form form"
+      >
+        <textarea
+          name="themeName"
+          rows="1"
+          cols="35"
+          maxLength="35"
+          className="edit-input"
+          placeholder={theme.name}
+          required
+        ></textarea>
         <div className="color-input-wrapper">
           <input
             className="color-input"
@@ -55,19 +76,11 @@ export default function AddThemeForm({ handleSubmit }) {
             value={colors.surfaceOn}
           />
         </div>
-        <textarea
-          name="themeName"
-          rows="1"
-          cols="35"
-          maxLength="35"
-          className="input"
-          placeholder="Theme name"
-          required
-        ></textarea>
-        <button type="submit" className="add-theme-button">
-          Add Theme
+
+        <button type="submit" className="edit-theme-button">
+          Save Theme
         </button>
       </form>
-    </>
+    </article>
   );
 }

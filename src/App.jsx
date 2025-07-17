@@ -41,18 +41,52 @@ export default function App() {
     setThemes(newThemes);
   }
 
+  function handleEditTheme(event, id) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    console.log("data: ", data);
+
+    const newThemes = themes.map((theme) => {
+      if (theme.id !== id) {
+        return theme;
+      } else {(theme = {
+          id: theme.id,
+          name: data.themeName,
+          colors: [
+            { role: "primary", value: data.primary },
+            { role: "secondary", value: data.secondary },
+            { role: "surface", value: data.surface },
+            { role: "surface-on", value: data.surfaceOn },
+          ],
+        })
+        console.log('theme: ', theme);
+        
+        return theme;
+      }
+    });
+    console.log('newThemes: ', newThemes);
+    
+    setThemes(newThemes);
+  }
+
   return (
     <>
       <header>
         <h1 className="title">Theme Creator</h1>
       </header>
       <main className="main">
+        
         <AddThemeForm handleSubmit={handleSubmit} />
         <ul>
           {themes.map((theme) => {
             return (
               <li key={theme.id}>
-                <Theme theme={theme} handleDeleteTheme={handleDeleteTheme} />
+                <Theme
+                  theme={theme}
+                  handleDeleteTheme={handleDeleteTheme}
+                  handleEditTheme={handleEditTheme}
+                />
               </li>
             );
           })}
