@@ -1,7 +1,7 @@
 import "./Theme.css";
 import Card from "./Card.jsx";
 import { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, X } from "lucide-react";
 import EditForm from "./EditForm.jsx";
 
 export default function Theme({ theme, handleDeleteTheme, handleEditTheme }) {
@@ -23,9 +23,17 @@ export default function Theme({ theme, handleDeleteTheme, handleEditTheme }) {
   return (
     <article className="card">
       <h2 className="theme-title">{theme.name}</h2>
-      <button className="toggle-button" onClick={() => setDetailed(!detailed)}>
+      <button
+        className="toggle-button"
+        onClick={function (event) {
+          if (editMode) {
+            setEditMode(!editMode);
+          }
+          setDetailed(!detailed);
+        }}
+      >
         <span className="theme-arrow">
-          {detailed ? <ChevronUp /> : <ChevronDown />}
+          {!detailed ? <ChevronDown /> : editMode ? <X /> : <ChevronUp />}
         </span>
       </button>
       {!detailed ? (
@@ -67,6 +75,8 @@ export default function Theme({ theme, handleDeleteTheme, handleEditTheme }) {
           handleEditTheme={handleEditTheme}
           setEditMode={setEditMode}
           editMode={editMode}
+          setDetailed={setDetailed}
+          detailed={detailed}
         />
       )}
     </article>

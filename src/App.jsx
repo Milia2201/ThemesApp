@@ -1,6 +1,4 @@
-import { useState } from "react";
 import "./App.css";
-import Card from "./components/Card.jsx";
 import { themes as initialThemes } from "./assets/db.js";
 import Theme from "./components/Theme.jsx";
 import AddThemeForm from "./components/AddThemeForm.jsx";
@@ -45,12 +43,12 @@ export default function App() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    console.log("data: ", data);
 
     const newThemes = themes.map((theme) => {
       if (theme.id !== id) {
         return theme;
-      } else {(theme = {
+      } else {
+        return (theme = {
           id: theme.id,
           name: data.themeName,
           colors: [
@@ -59,14 +57,10 @@ export default function App() {
             { role: "surface", value: data.surface },
             { role: "surface-on", value: data.surfaceOn },
           ],
-        })
-        console.log('theme: ', theme);
-        
-        return theme;
+        });
       }
     });
-    console.log('newThemes: ', newThemes);
-    
+
     setThemes(newThemes);
   }
 
@@ -76,7 +70,6 @@ export default function App() {
         <h1 className="title">Theme Creator</h1>
       </header>
       <main className="main">
-        
         <AddThemeForm handleSubmit={handleSubmit} />
         <ul>
           {themes.map((theme) => {
