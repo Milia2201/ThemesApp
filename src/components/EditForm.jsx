@@ -9,13 +9,12 @@ export default function EditForm({
   setDetailed,
   detailed,
 }) {
-  const [colors, setColors] = useState({
+  const colors = {
     primary: theme.colors[0].value,
     secondary: theme.colors[1].value,
     surface: theme.colors[2].value,
     surfaceOn: theme.colors[3].value,
-  });
-  console.log("theme: ", theme);
+  };
 
   return (
     <article className="card">

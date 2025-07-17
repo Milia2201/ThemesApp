@@ -2,12 +2,12 @@ import { useState } from "react";
 import "./AddThemeForm.css";
 
 export default function AddThemeForm({ handleSubmit }) {
-  const [colors, setColors] = useState({
+  const colors = {
     primary: "#69b00b", // Default color for primary
     secondary: "#698008", // Default color for secondary
     surface: "#800869", // A50B5EDefault color for surface
     surfaceOn: "#b00b69", // Default color for surface-on
-  });
+  };
 
   return (
     <>
@@ -45,7 +45,7 @@ export default function AddThemeForm({ handleSubmit }) {
             defaultValue={colors.surfaceOn}
           />
         </div>
-        <textarea
+        <input
           name="themeName"
           rows="1"
           cols="35"
@@ -53,7 +53,7 @@ export default function AddThemeForm({ handleSubmit }) {
           className="input"
           placeholder="Theme name"
           required
-        ></textarea>
+        ></input>
         <button type="submit" className="add-theme-button">
           Add Theme
         </button>
