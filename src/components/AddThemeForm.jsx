@@ -9,12 +9,6 @@ export default function AddThemeForm({ handleSubmit }) {
     surfaceOn: "#b00b69", // Default color for surface-on
   });
 
-  function handleColorChange(event) {
-    const name = event.target.name;
-    const colorValue = event.target.value;
-    setColors({ ...colors, [name]: colorValue });
-  }
-
   return (
     <>
       <form onSubmit={handleSubmit} className="form">
@@ -22,37 +16,33 @@ export default function AddThemeForm({ handleSubmit }) {
         <div className="color-input-wrapper">
           <input
             className="color-input"
-            onChange={handleColorChange}
             type="color"
             name="primary"
-            value={colors.primary}
+            defaultValue={colors.primary}
           />
         </div>
         <div className="color-input-wrapper">
           <input
             className="color-input"
-            onChange={handleColorChange}
             type="color"
             name="secondary"
-            value={colors.secondary}
+            defaultValue={colors.secondary}
           />
         </div>
         <div className="color-input-wrapper">
           <input
             className="color-input"
-            onChange={handleColorChange}
             type="color"
             name="surface"
-            value={colors.surface}
+            defaultValue={colors.surface}
           />
         </div>
         <div className="color-input-wrapper">
           <input
             className="color-input"
-            onChange={handleColorChange}
             type="color"
             name="surfaceOn"
-            value={colors.surfaceOn}
+            defaultValue={colors.surfaceOn}
           />
         </div>
         <textarea
